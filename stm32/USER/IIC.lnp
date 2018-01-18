@@ -1,0 +1,22 @@
+--cpu Cortex-M3
+".\main.o"
+".\stm32f10x_it.o"
+".\system_stm32f10x.o"
+".\led.o"
+".\key.o"
+".\myiic.o"
+".\apds_9960.o"
+".\apds_9960_deal.o"
+".\delay.o"
+".\sys.o"
+".\usart.o"
+".\core_cm3.o"
+".\startup_stm32f10x_hd.o"
+".\stm32f10x_gpio.o"
+".\stm32f10x_rcc.o"
+".\stm32f10x_usart.o"
+".\misc.o"
+--strict --scatter ".\IIC.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\IIC.map" -o .\IIC.axf
