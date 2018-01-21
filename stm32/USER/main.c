@@ -35,22 +35,18 @@ void handleGesture(void);
 	while(1)
 	{	
 		delay_ms(1);
-		if(x==200)
+		if(x==20)
 		{
 			x=0;
 			LED0=APDS9960_INT;
-			
-//			printf("123\r\n");
 			if(APDS9960_INT==0)
 			{
 			  handleGesture();
 		   //readProximity(&proximity_data);
 			}
-			
-//			printf("321\r\n");
+
 		}
-		x++;
-		
+		x++;		
 	}  
  }
  
@@ -76,12 +72,6 @@ void handleGesture(void);
  
 void handleGesture() {
     if (isGestureAvailable() ) {
-			uint8_t val;
-    
-    /* Read value from GSTATUS register */
-    wireReadDataByte(APDS9960_GSTATUS, &val);
-    printf("%d\r\n",val);
-		
     switch ( readGesture() ) {
       case DIR_UP:
         printf("UP");
@@ -105,5 +95,6 @@ void handleGesture() {
         printf("NONE");
 				break;
     }
+		printf("\r\n");
   }
 }

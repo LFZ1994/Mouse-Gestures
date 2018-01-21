@@ -1,5 +1,5 @@
 Dependencies for Project 'IIC', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x5A5E25E5)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\HARDWARE\KEY -I..\HARDWARE\IIC -I..\HARDWARE\APDS_9960 -I..\HARDWARE-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\main.o --depend .\main.d)
+F (.\main.c)(0x5A634A1B)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\HARDWARE\KEY -I..\HARDWARE\IIC -I..\HARDWARE\APDS_9960 -I..\HARDWARE-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\main.o --depend .\main.d)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\HARDWARE\LED\led.h)(0x5A44FCF9)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\SYSTEM\sys\sys.h)(0x550F951B)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\USER\stm32f10x.h)(0x4D783CB4)
@@ -36,7 +36,7 @@ I (D:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7B744)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\HARDWARE\KEY\key.h)(0x532ADF68)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\HARDWARE\APDS_9960\apds_9960.h)(0x5A4794F0)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\HARDWARE\IIC\myiic.h)(0x5A57601B)
-I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\HARDWARE\APDS_9960\apds_9960_deal.h)(0x5A5F5EC0)
+I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\HARDWARE\APDS_9960\apds_9960_deal.h)(0x5A633E0F)
 I (D:\Keil\ARM\ARMCC\include\stdbool.h)(0x51C7B744)
 F (.\stm32f10x_it.c)(0x4EBEACB0)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\HARDWARE\KEY -I..\HARDWARE\IIC -I..\HARDWARE\APDS_9960 -I..\HARDWARE-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\stm32f10x_it.o --depend .\stm32f10x_it.d)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\USER\stm32f10x_it.h)(0x4D99A426)
@@ -225,8 +225,8 @@ I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\STM32F10x_FWLib
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\SYSTEM\delay\delay.h)(0x55CC2E59)
-F (..\HARDWARE\APDS_9960\apds_9960_deal.c)(0x5A60A8C1)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\HARDWARE\KEY -I..\HARDWARE\IIC -I..\HARDWARE\APDS_9960 -I..\HARDWARE-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\apds_9960_deal.o --depend .\apds_9960_deal.d)
-I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\HARDWARE\APDS_9960\apds_9960_deal.h)(0x5A5F5EC0)
+F (..\HARDWARE\APDS_9960\apds_9960_deal.c)(0x5A634869)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\HARDWARE\KEY -I..\HARDWARE\IIC -I..\HARDWARE\APDS_9960 -I..\HARDWARE-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\PACK\ARM\CMSIS\3.20.3\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o .\apds_9960_deal.o --depend .\apds_9960_deal.d)
+I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\HARDWARE\APDS_9960\apds_9960_deal.h)(0x5A633E0F)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\HARDWARE\APDS_9960\apds_9960.h)(0x5A4794F0)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\HARDWARE\IIC\myiic.h)(0x5A57601B)
 I (C:\Users\hasee\Desktop\2017项目\手势控件\Mouse-Gestures\stm32\SYSTEM\sys\sys.h)(0x550F951B)

@@ -24,7 +24,7 @@
 
 /* Gesture parameters 运动参数*/ 
 #define GESTURE_THRESHOLD_OUT   10				//10
-#define GESTURE_SENSITIVITY_1   50
+#define GESTURE_SENSITIVITY_1   10
 #define GESTURE_SENSITIVITY_2   20
 
 /* Error code for returned values */
@@ -339,6 +339,14 @@ typedef struct gesture_data_type {
     extern int gesture_far_count_;
     extern int gesture_state_;
     extern int gesture_motion_;
+		extern uint8_t u_first;
+		extern uint8_t d_first;
+		extern uint8_t l_first;
+		extern uint8_t r_first;
+		extern uint8_t u_last;
+		extern uint8_t d_last;
+		extern uint8_t l_last;
+		extern uint8_t r_last;
 		
 		extern double abs(double __x); 
 

@@ -27,6 +27,16 @@
  int gesture_far_count_;
  int gesture_state_;
  int gesture_motion_;
+ uint8_t u_first = 0;
+ uint8_t d_first = 0;
+ uint8_t l_first = 0;
+ uint8_t r_first = 0;
+ uint8_t u_last = 0;
+ uint8_t d_last = 0;
+ uint8_t l_last = 0;
+ uint8_t r_last = 0;
+ 
+ 
  gesture_data_type gesture_data_;
  
 /**
@@ -515,11 +525,13 @@ int readGesture()
             delay_ms(FIFO_PAUSE_TIME);
             decodeGesture();
             motion = gesture_motion_;
+						
 #if MYDEBUG
             printf("END: ");
             printf("%d",gesture_motion_);
 						printf("\r\n");
 #endif
+
             resetGestureParameters();
             return motion;
         }
@@ -706,26 +718,21 @@ void resetGestureParameters()
     gesture_far_count_ = 0;
     
     gesture_state_ = 0;
+		u_first = 0;
+				
     gesture_motion_ = DIR_NONE;
 }
 
 bool processGestureData()
 {
-    uint8_t u_first = 0;
-    uint8_t d_first = 0;
-    uint8_t l_first = 0;
-    uint8_t r_first = 0;
-    uint8_t u_last = 0;
-    uint8_t d_last = 0;
-    uint8_t l_last = 0;
-    uint8_t r_last = 0;
-    int ud_ratio_first;
-    int lr_ratio_first;
-    int ud_ratio_last;
-    int lr_ratio_last;
-    int ud_delta;
-    int lr_delta;
-    int i;
+
+//    int ud_ratio_first;
+//    int lr_ratio_first;
+//    int ud_ratio_last;
+//    int lr_ratio_last;
+//    int ud_delta;
+//    int lr_delta;
+    int i=0;
 
     /* If we have less than 4 total gestures, that's not enough */
     if( gesture_data_.total_gestures <= 4 ) {
@@ -737,32 +744,26 @@ bool processGestureData()
         (gesture_data_.total_gestures > 0) ) {
         
         /* Find the first value in U/D/L/R above the threshold */
-        for( i = 0; i < gesture_data_.total_gestures; i++ ) {
-#if MYDEBUG
-            printf("Finding first: ");
-            printf("U:");
-            printf("%d",gesture_data_.u_data[i]);
-            printf(" D:");
-            printf("%d",gesture_data_.d_data[i]);
-            printf(" L:");
-            printf("%d",gesture_data_.l_data[i]);
-            printf(" R:");
-            printf("%d",gesture_data_.r_data[i]);
-						printf("\r\n");
-#endif
+        
 
-            if( (gesture_data_.u_data[i] > GESTURE_THRESHOLD_OUT) &&
-                (gesture_data_.d_data[i] > GESTURE_THRESHOLD_OUT) &&
-                (gesture_data_.l_data[i] > GESTURE_THRESHOLD_OUT) &&
-                (gesture_data_.r_data[i] > GESTURE_THRESHOLD_OUT) ) {
+            if( u_first!=0 ) {
+                
+                u_last = gesture_data_.u_data[i];
+                d_last = gesture_data_.d_data[i];
+                l_last = gesture_data_.l_data[i];
+                r_last = gesture_data_.r_data[i];
+            }
+						
+						if( u_first==0 ) {
                 
                 u_first = gesture_data_.u_data[i];
                 d_first = gesture_data_.d_data[i];
                 l_first = gesture_data_.l_data[i];
                 r_first = gesture_data_.r_data[i];
-                break;
             }
-        }
+						
+						
+        
         
         /* If one of the _first values is 0, then there is no good data */
         if( (u_first == 0) || (d_first == 0) || \
@@ -771,161 +772,8 @@ bool processGestureData()
             return false;
         }
         /* Find the last value in U/D/L/R above the threshold */
-        for( i = gesture_data_.total_gestures - 1; i >= 0; i-- ) {
-#if DEBUG
-            printf("Finding last: ");
-            printf("U:");
-            printf("%d",gesture_data_.u_data[i]);
-            printf(" D:");
-            printf("%d",gesture_data_.d_data[i]);
-            printf(" L:");
-            printf("%d",gesture_data_.l_data[i]);
-            printf(" R:");
-            printf("%d",gesture_data_.r_data[i]);
-						printf("\r\n");
-#endif
-            if( (gesture_data_.u_data[i] > GESTURE_THRESHOLD_OUT) &&
-                (gesture_data_.d_data[i] > GESTURE_THRESHOLD_OUT) &&
-                (gesture_data_.l_data[i] > GESTURE_THRESHOLD_OUT) &&
-                (gesture_data_.r_data[i] > GESTURE_THRESHOLD_OUT) ) {
-                
-                u_last = gesture_data_.u_data[i];
-                d_last = gesture_data_.d_data[i];
-                l_last = gesture_data_.l_data[i];
-                r_last = gesture_data_.r_data[i];
-                 break;
-            }
-        }
-    }
-    
-    /* Calculate the first vs. last ratio of up/down and left/right */
-    ud_ratio_first = ((u_first - d_first) * 100) / (u_first + d_first);
-    lr_ratio_first = ((l_first - r_first) * 100) / (l_first + r_first);
-    ud_ratio_last = ((u_last - d_last) * 100) / (u_last + d_last);
-    lr_ratio_last = ((l_last - r_last) * 100) / (l_last + r_last);
-       
-#if DEBUG
-    printf("Last Values: ");
-    printf("U:");
-    printf("%d",u_last);
-    printf(" D:");
-    printf("%d",d_last);
-    printf(" L:");
-    printf("%d",l_last);
-    printf(" R:");
-    printf("%d",r_last);
-		printf("\r\n");
-
-    printf("Ratios: ");
-    printf("UD Fi: ");
-    printf("%d",ud_ratio_first);
-    printf(" UD La: ");
-    printf("%d",ud_ratio_last);
-    printf(" LR Fi: ");
-    printf("%d",lr_ratio_first);
-    printf(" LR La: ");
-    printf("%d",lr_ratio_last);
-		printf("\r\n");
-#endif
-       
-    /* Determine the difference between the first and last ratios */
-    ud_delta = ud_ratio_last - ud_ratio_first;
-    lr_delta = lr_ratio_last - lr_ratio_first;
-    
-#if DEBUG
-    printf("Deltas: ");
-    printf("UD: ");
-    printf("%d",ud_delta);
-    printf(" LR: ");
-    printf("%d",lr_delta);
-		printf("\r\n");
-#endif
-
-    /* Accumulate the UD and LR delta values */
-    gesture_ud_delta_ += ud_delta;
-    gesture_lr_delta_ += lr_delta;
-    
-#if DEBUG
-    printf("Accumulations: ");
-    printf("UD: ");
-    printf("%d",gesture_ud_delta_);
-    printf(" LR: ");
-    printf("%d",gesture_lr_delta_);
-		printf("\r\n");
-#endif
-    
-    /* Determine U/D gesture */
-    if( gesture_ud_delta_ >= GESTURE_SENSITIVITY_1 ) {
-        gesture_ud_count_ = 1;
-    } else if( gesture_ud_delta_ <= -GESTURE_SENSITIVITY_1 ) {
-        gesture_ud_count_ = -1;
-    } else {
-        gesture_ud_count_ = 0;
-    }
-    
-    /* Determine L/R gesture */
-    if( gesture_lr_delta_ >= GESTURE_SENSITIVITY_1 ) {
-        gesture_lr_count_ = 1;
-    } else if( gesture_lr_delta_ <= -GESTURE_SENSITIVITY_1 ) {
-        gesture_lr_count_ = -1;
-    } else {
-        gesture_lr_count_ = 0;
-    }
-    
-    /* Determine Near/Far gesture */
-    if( (gesture_ud_count_ == 0) && (gesture_lr_count_ == 0) ) {
-        if( (abs(ud_delta) < GESTURE_SENSITIVITY_2) && \
-            (abs(lr_delta) < GESTURE_SENSITIVITY_2) ) {
-            
-            if( (ud_delta == 0) && (lr_delta == 0) ) {
-                gesture_near_count_++;
-            } else if( (ud_delta != 0) || (lr_delta != 0) ) {
-                gesture_far_count_++;
-            }
-            
-            if( (gesture_near_count_ >= 10) && (gesture_far_count_ >= 2) ) {
-                if( (ud_delta == 0) && (lr_delta == 0) ) {
-                    gesture_state_ = NEAR_STATE;
-                } else if( (ud_delta != 0) && (lr_delta != 0) ) {
-                    gesture_state_ = FAR_STATE;
-                }
-                return true;
-            }
-        }
-    } else {
-        if( (abs(ud_delta) < GESTURE_SENSITIVITY_2) && \
-            (abs(lr_delta) < GESTURE_SENSITIVITY_2) ) {
-                
-            if( (ud_delta == 0) && (lr_delta == 0) ) {
-                gesture_near_count_++;
-            }
-            
-            if( gesture_near_count_ >= 10 ) {
-                gesture_ud_count_ = 0;
-                gesture_lr_count_ = 0;
-                gesture_ud_delta_ = 0;
-                gesture_lr_delta_ = 0;
-            }
-        }
-    }
-    
-#if DEBUG
-
-    printf("UD_CT: ");
-    printf("%d",gesture_ud_count_);
-    printf(" LR_CT: ");
-    printf("%d",gesture_lr_count_);
-    printf(" NEAR_CT: ");
-    printf("%d",gesture_near_count_);
-    printf(" FAR_CT: ");
-    printf("%d",gesture_far_count_);
-		printf("\r\n");
-    printf("----------");
-		printf("\r\n");
-
-#endif
-		
-    return false;
+    }       		
+    return false;		
 }
 
 /**
@@ -934,16 +782,62 @@ bool processGestureData()
  * @return True if near/far event. False otherwise.
  */
 bool decodeGesture()
-{
-    /* Return if near or far event is detected */
-    if( gesture_state_ == NEAR_STATE ) {
-        gesture_motion_ = DIR_NEAR;
-        return true;
-    } else if ( gesture_state_ == FAR_STATE ) {
-        gesture_motion_ = DIR_FAR;
-        return true;
-    }
-    
+{		
+#if MYDEBUG
+            printf("first data:");
+						printf(" U:");
+            printf("%d",u_first);
+						printf(" D:");
+            printf("%d",d_first);
+						printf(" L:");
+            printf("%d",l_first);
+						printf(" R:");
+            printf("%d",r_first);
+						printf("\r\n");
+						printf("last  data:");
+						printf(" U:");
+            printf("%d",u_last);
+						printf(" D:");
+            printf("%d",d_last);
+						printf(" L:");
+            printf("%d",l_last);
+						printf(" R:");
+            printf("%d",r_last);
+						printf("\r\n");
+#endif
+		gesture_ud_delta_=(u_first-d_first)+(d_last-u_last);
+		gesture_lr_delta_=(l_first-r_first)+(r_last-l_last);
+		
+		
+		if(gesture_ud_delta_>(GESTURE_SENSITIVITY_1)){
+				gesture_ud_count_=1;
+			} else if (gesture_ud_delta_<-GESTURE_SENSITIVITY_1){
+				gesture_ud_count_=-1;
+			}
+		if(gesture_lr_delta_>(GESTURE_SENSITIVITY_1)){
+				gesture_lr_count_=1;
+			} else if (gesture_lr_delta_<-GESTURE_SENSITIVITY_1){
+				gesture_lr_count_=-1;
+			}
+//		if((u_last==255)&&(d_last==255)&&(l_last==255)&&(r_last==255)){
+//				if
+//		}
+//		
+#if MYDEBUG
+            
+						printf(" ud_count_");
+            printf("%d",gesture_ud_count_);
+						printf(" lr_count_");
+            printf("%d",gesture_lr_count_);
+						printf("\r\n");
+						printf(" ud_delta_");
+            printf("%d",gesture_ud_delta_);
+						printf(" lr_delta_");
+            printf("%d",gesture_lr_delta_);
+						printf("\r\n");
+
+#endif			
+	   
     /* Determine swipe direction */
     if( (gesture_ud_count_ == -1) && (gesture_lr_count_ == 0) ) {
         gesture_motion_ = DIR_UP;
@@ -953,31 +847,36 @@ bool decodeGesture()
         gesture_motion_ = DIR_RIGHT;
     } else if( (gesture_ud_count_ == 0) && (gesture_lr_count_ == -1) ) {
         gesture_motion_ = DIR_LEFT;
-    } else if( (gesture_ud_count_ == -1) && (gesture_lr_count_ == 1) ) {
-        if( abs(gesture_ud_delta_) > abs(gesture_lr_delta_) ) {
+    } 
+		else if( (gesture_ud_count_ == -1) && (gesture_lr_count_ == 1) ) {
+        if( -gesture_ud_delta_ > gesture_lr_delta_ ) {
             gesture_motion_ = DIR_UP;
         } else {
             gesture_motion_ = DIR_RIGHT;
         }
-    } else if( (gesture_ud_count_ == 1) && (gesture_lr_count_ == -1) ) {
-        if( abs(gesture_ud_delta_) > abs(gesture_lr_delta_) ) {
+    } 
+		else if( (gesture_ud_count_ == 1) && (gesture_lr_count_ == -1) ) {
+        if( gesture_ud_delta_ > -gesture_lr_delta_ ) {
             gesture_motion_ = DIR_DOWN;
         } else {
             gesture_motion_ = DIR_LEFT;
         }
-    } else if( (gesture_ud_count_ == -1) && (gesture_lr_count_ == -1) ) {
-        if( abs(gesture_ud_delta_) > abs(gesture_lr_delta_) ) {
+    } 
+		else if( (gesture_ud_count_ == -1) && (gesture_lr_count_ == -1) ) {
+        if( -gesture_ud_delta_ > -gesture_lr_delta_ ) {
             gesture_motion_ = DIR_UP;
         } else {
             gesture_motion_ = DIR_LEFT;
         }
-    } else if( (gesture_ud_count_ == 1) && (gesture_lr_count_ == 1) ) {
-        if( abs(gesture_ud_delta_) > abs(gesture_lr_delta_) ) {
+    } 
+		else if( (gesture_ud_count_ == 1) && (gesture_lr_count_ == 1) ) {
+        if( gesture_ud_delta_ > gesture_lr_delta_ ) {
             gesture_motion_ = DIR_DOWN;
         } else {
             gesture_motion_ = DIR_RIGHT;
         }
-    } else {
+    } 
+		else {
         return false;
     }
     

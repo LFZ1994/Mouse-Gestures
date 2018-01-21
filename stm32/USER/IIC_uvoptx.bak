@@ -172,25 +172,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>863</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134223266</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\hasee\Desktop\2017脧卯脛驴\脢脰脢脝驴脴录镁\Mouse-Gestures\stm32\HARDWARE\APDS_9960\apds_9960_deal.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\IIC\../HARDWARE/APDS_9960/apds_9960_deal.c\863</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
           <LineNumber>497</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134223762</Address>
+          <Address>134223860</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -202,11 +186,11 @@
           <Expression>\\IIC\../HARDWARE/APDS_9960/apds_9960_deal.c\497</Expression>
         </Bp>
         <Bp>
-          <Number>2</Number>
+          <Number>1</Number>
           <Type>0</Type>
           <LineNumber>498</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134223768</Address>
+          <Address>134223866</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -218,11 +202,11 @@
           <Expression>\\IIC\../HARDWARE/APDS_9960/apds_9960_deal.c\498</Expression>
         </Bp>
         <Bp>
-          <Number>3</Number>
+          <Number>2</Number>
           <Type>0</Type>
           <LineNumber>515</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134223786</Address>
+          <Address>134223884</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -234,11 +218,11 @@
           <Expression>\\IIC\../HARDWARE/APDS_9960/apds_9960_deal.c\515</Expression>
         </Bp>
         <Bp>
-          <Number>4</Number>
+          <Number>3</Number>
           <Type>0</Type>
           <LineNumber>441</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134223604</Address>
+          <Address>134223702</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -250,11 +234,11 @@
           <Expression>\\IIC\../HARDWARE/APDS_9960/apds_9960_deal.c\441</Expression>
         </Bp>
         <Bp>
-          <Number>5</Number>
+          <Number>4</Number>
           <Type>0</Type>
-          <LineNumber>915</LineNumber>
+          <LineNumber>876</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134223504</Address>
+          <Address>134223364</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -263,14 +247,14 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>C:\Users\hasee\Desktop\2017脧卯脛驴\脢脰脢脝驴脴录镁\Mouse-Gestures\stm32\HARDWARE\APDS_9960\apds_9960_deal.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\IIC\../HARDWARE/APDS_9960/apds_9960_deal.c\915</Expression>
+          <Expression>\\IIC\../HARDWARE/APDS_9960/apds_9960_deal.c\876</Expression>
         </Bp>
         <Bp>
-          <Number>6</Number>
+          <Number>5</Number>
           <Type>0</Type>
-          <LineNumber>761</LineNumber>
+          <LineNumber>444</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134222948</Address>
+          <Address>134223712</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -279,7 +263,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>C:\Users\hasee\Desktop\2017脧卯脛驴\脢脰脢脝驴脴录镁\Mouse-Gestures\stm32\HARDWARE\APDS_9960\apds_9960_deal.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\IIC\../HARDWARE/APDS_9960/apds_9960_deal.c\761</Expression>
+          <Expression>\\IIC\../HARDWARE/APDS_9960/apds_9960_deal.c\444</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
@@ -328,10 +312,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>20</ColumnNumber>
+      <ColumnNumber>2</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>26</TopLine>
-      <CurrentLine>25</CurrentLine>
+      <TopLine>23</TopLine>
+      <CurrentLine>34</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -434,8 +418,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>2</TopLine>
+      <CurrentLine>17</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\APDS_9960\apds_9960.c</PathWithFileName>
       <FilenameWithoutPath>apds_9960.c</FilenameWithoutPath>
@@ -448,10 +432,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>66</ColumnNumber>
+      <ColumnNumber>40</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>68</TopLine>
-      <CurrentLine>69</CurrentLine>
+      <TopLine>711</TopLine>
+      <CurrentLine>753</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\APDS_9960\apds_9960_deal.c</PathWithFileName>
       <FilenameWithoutPath>apds_9960_deal.c</FilenameWithoutPath>
@@ -474,8 +458,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>201</TopLine>
+      <CurrentLine>219</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SYSTEM\delay\delay.c</PathWithFileName>
       <FilenameWithoutPath>delay.c</FilenameWithoutPath>
@@ -506,7 +490,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>49</TopLine>
+      <TopLine>51</TopLine>
       <CurrentLine>55</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SYSTEM\usart\usart.c</PathWithFileName>
@@ -546,7 +530,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>138</TopLine>
+      <TopLine>122</TopLine>
       <CurrentLine>151</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\CORE\startup_stm32f10x_hd.s</PathWithFileName>
